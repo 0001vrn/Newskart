@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "783208791942",
+    "project_id": "firebase-booksmore"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783208791942:android:fa60a0c5338cc89e",
+        "android_client_info": {
+          "package_name": "booksmore.varun.com.booksmore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783208791942-8u5lci2vlo6fciqfb56rq0e7s821assh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "booksmore.varun.com.booksmore",
+            "certificate_hash": "d230ca7ff8fcc467bf941f56cbce6c29c38ad85e"
+          }
+        },
+        {
+          "client_id": "783208791942-27fo9ultbf67vok9o04q1i87gt15ucpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhTEKE7cxEt1-wQCmTmkm22Kl0Rz7atBA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
