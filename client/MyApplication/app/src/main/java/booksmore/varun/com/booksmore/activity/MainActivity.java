@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -19,12 +20,10 @@ import com.google.android.gms.common.api.Status;
 
 import booksmore.varun.com.booksmore.R;
 import booksmore.varun.com.booksmore.fragment.CartFragment;
-import booksmore.varun.com.booksmore.fragment.NewsMagFragment;
+import booksmore.varun.com.booksmore.fragment.HomeFragment;
 import booksmore.varun.com.booksmore.fragment.ProfileFragment;
-import booksmore.varun.com.booksmore.fragment.dummy.Data;
-import booksmore.varun.com.booksmore.fragment.dummy.DummyContent;
 
-public class MainActivity extends AppCompatActivity implements NewsMagFragment.OnListFragmentInteractionListener,GoogleApiClient.OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     //private TextView mTextMessage;
     private SharedPreferences pref;
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NewsMagFragment.O
     };
 
     private void goToHome() {
-        Fragment frag = new NewsMagFragment();
+        Fragment frag = new HomeFragment();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.content,frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -111,10 +110,6 @@ public class MainActivity extends AppCompatActivity implements NewsMagFragment.O
         googleApiClient.disconnect();
     }
 
-    @Override
-    public void onListFragmentInteraction(Data item) {
-
-    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -126,5 +121,12 @@ public class MainActivity extends AppCompatActivity implements NewsMagFragment.O
                 //updateUI(false);
             }
         });
+    }
+
+
+    public interface ClickListener {
+        void onClick(View view, int position);
+
+        void onLongClick(View view, int position);
     }
 }

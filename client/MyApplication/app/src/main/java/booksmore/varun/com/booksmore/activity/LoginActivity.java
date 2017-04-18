@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private TextView mTextView;
+    private TextView vendor;
     private SignInButton signIn;
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE=9001;
@@ -100,11 +101,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
+        vendor = (TextView) findViewById(R.id.vendor);
 
         mPasswordView = (EditText) findViewById(R.id.password);
 
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                goToMain();
+                return false;
+            }
+        });
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,6 +136,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mTextView.setOnClickListener(this);
         signIn = (SignInButton)findViewById(R.id.bt_signin);
         signIn.setOnClickListener(this);
+        vendor.setOnClickListener(this);
+
 
         //checkIfLogout();
         checkIfLoggedIn();
@@ -393,6 +404,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 break;
             case R.id.bt_signin:
                 signIn();
+                break;
+            case R.id.vendor:
+                startActivity(new Intent(LoginActivity.this,VendorSignup.class));
                 break;
         }
     }

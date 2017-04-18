@@ -1,6 +1,7 @@
 <ScrollView 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="booksmore.varun.com.booksmore.fragment.HomeFragment">
@@ -9,8 +10,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
         >
+        <Button
+            android:id="@+id/news_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Newspaper"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/mag_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Magazine"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/ncert_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="NCERT BOOKS"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/novels_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="NOVELS"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/comp_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Competitive Books"
+            android:textStyle="bold" />
 
 
 

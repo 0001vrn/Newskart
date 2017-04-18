@@ -28,29 +28,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import booksmore.varun.com.booksmore.Constants;
 import booksmore.varun.com.booksmore.R;
-import booksmore.varun.com.booksmore.RequestInterface;
-import booksmore.varun.com.booksmore.model.User;
-import booksmore.varun.com.booksmore.model.request.ServerRequest;
-import booksmore.varun.com.booksmore.model.response.ServerResponse;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class SignupActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>,View.OnClickListener {
+public class VendorSignup extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -70,31 +59,43 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView,mName;
+    private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private Button mSignUpButton;
-    private EditText mPhoneView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_vendor_signup);
         setupActionBar();
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email_signup);
-        mName = (AutoCompleteTextView) findViewById(R.id.name_signup);
+/*      mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password_signup);
-        mPhoneView = (EditText) findViewById(R.id.phone_signup);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                    attemptLogin();
+                    return true;
+                }
+                return false;
+            }
+        });
 
-        mSignUpButton = (Button) findViewById(R.id.sign_up_button);
-        mSignUpButton.setOnClickListener(this);
+        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptLogin();
+            }
+        });
 
-        mLoginFormView = findViewById(R.id.signup_form);
-        mProgressView = findViewById(R.id.signup_progress);
-
+        mLoginFormView = findViewById(R.id.login_form);
+        mProgressView = findViewById(R.id.login_progress);
+        */
     }
 
     private void populateAutoComplete() {
@@ -212,10 +213,6 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
         //TODO: Replace this with your own logic
         return password.length() > 4;
     }
-    private boolean isPhoneValid(String phone) {
-        //TODO: Replace this with your own logic
-        return phone.length() == 10;
-    }
 
     /**
      * Shows the progress UI and hides the login form.
@@ -290,71 +287,10 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(SignupActivity.this,
+                new ArrayAdapter<>(VendorSignup.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-            case R.id.sign_up_button:
-                String name = mName.getText().toString();
-                String email = mEmailView.getText().toString();
-                String pass = mPasswordView.getText().toString();
-                String phone = mPhoneView.getText().toString();
-                if(!email.isEmpty()&&!name.isEmpty()&&!pass.isEmpty()&&!phone.isEmpty()) {
-                    showProgress(true);
-                    signupProcess(name, email, pass,phone);
-                }
-                else{
-                    Toast.makeText(SignupActivity.this,"Fields are empty",Toast.LENGTH_SHORT).show();
-                }
-                break;
-        }
-
-    }
-
-    private void signupProcess(String name, String email, String pass,String phone) {
-
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(pass);
-        user.setPhone(phone);
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        ServerRequest request = new ServerRequest();
-        request.setOperation(Constants.REGISTER_OPERATION);
-        request.setUser(user);
-        Call<ServerResponse> response = requestInterface.operation(request);
-
-        response.enqueue(new Callback<ServerResponse>() {
-            @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                ServerResponse resp = response.body();
-                if(resp.getResult().equals(Constants.SUCCESS)){
-                    showProgress(false);
-                    Toast.makeText(SignupActivity.this,resp.getMessage(),Toast.LENGTH_SHORT).show();
-
-                }else {
-                    showProgress(false);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
-                showProgress(false);
-            }
-        });
     }
 
 
