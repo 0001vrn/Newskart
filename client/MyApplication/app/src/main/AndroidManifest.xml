@@ -3,6 +3,9 @@
     package="booksmore.varun.com.booksmore">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -15,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -27,29 +30,48 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SignupActivity"
+            android:name=".ui.activity.SignupActivity"
             android:label="@string/title_activity_signup"
-            android:parentActivityName=".activity.LoginActivity"
+            android:parentActivityName=".ui.activity.LoginActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="booksmore.varun.com.booksmore.activity.LoginActivity" />
+                android:value="booksmore.varun.com.booksmore.ui.activity.LoginActivity" />
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.VendorSignup"
+            android:name=".ui.activity.VendorSignup"
             android:label="@string/title_activity_vendor_signup"
-            android:parentActivityName=".activity.LoginActivity">
+            android:parentActivityName=".ui.activity.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="booksmore.varun.com.booksmore.activity.LoginActivity" />
+                android:value="booksmore.varun.com.booksmore.ui.activity.LoginActivity" />
+        </activity>
+        <activity
+            android:label="Location"
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:theme="@style/AppTheme"
+            android:name=".ui.activity.LocationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="booksmore.varun.com.booksmore.ui.activity.MainActivity" />
+
+        </activity>
+        <activity
+            android:name=".ui.activity.VendorDash"
+            android:label="@string/title_activity_vendor_dash"
+            android:parentActivityName=".ui.activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="booksmore.varun.com.booksmore.ui.activity.LoginActivity" />
         </activity>
     </application>
 

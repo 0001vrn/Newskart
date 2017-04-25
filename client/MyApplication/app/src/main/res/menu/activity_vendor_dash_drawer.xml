@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_current_order"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="Current Order" />
+        <item
+            android:id="@+id/nav_products"
+            android:icon="@drawable/ic_local_parking_black_24dp"
+            android:title="Products" />
+        <item
+            android:id="@+id/nav_areas"
+            android:icon="@drawable/ic_location_city_black_24dp"
+            android:title="Areas" />
+        <item
+            android:id="@+id/nav_order_history"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Order History" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Profile" />
+    </group>
+</menu>

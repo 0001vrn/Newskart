@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="booksmore.varun.com.booksmore.fragment.ProfileFragment">
+    tools:context="booksmore.varun.com.booksmore.ui.fragment.ProfileFragment">
 
     <ScrollView
     android:layout_width="match_parent"
@@ -47,6 +47,8 @@
             />
 
         <Button
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"
             android:id="@+id/bt_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="booksmore.varun.com.booksmore.activity.SplashActivity">
+    tools:context="booksmore.varun.com.booksmore.ui.activity.SplashActivity">
 
     <ImageView
         android:layout_height="fill_parent"
